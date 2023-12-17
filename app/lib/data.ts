@@ -19,8 +19,18 @@ export async function fetchRevenue() {
   try {
     // Artificially delay a response for demo purposes.
     // Don't do this in production :)
+//
+     console.log('Fetching revenue data...');
 
-    // console.log('Fetching revenue data...');
+
+     const da = await fetch('https://bobsburgers-api.herokuapp.com/characters/2')
+     .then((res) => res.json())
+     .catch((err) => {
+      console.log(err);
+       throw err
+     })
+     console.log(da);
+
     // await new Promise((resolve) => setTimeout(resolve, 3000));
 
     const data = await sql<Revenue>`SELECT * FROM revenue`;
